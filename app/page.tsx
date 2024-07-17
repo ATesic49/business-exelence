@@ -1,4 +1,4 @@
-import Image from "next/image";
+"use client";
 import image from "@/public/vercel.svg";
 import Button from "@/components/Button";
 import Logo from "@/public/imgs/LogoPravi.png";
@@ -10,10 +10,26 @@ import Offer from "@/components/Offer";
 import Ucenje from "@/components/Ucenje";
 import Kontakt from "@/components/Kontakt";
 import Navbar from "@/components/Navbar";
+import Link from "next/link";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
+import { Context } from "@/components/LangWrapper";
 export default function Home() {
+  const setState = useContext(Context)[1];
+  const params = useContext(Context)[0];
+
+  const [srb, setSrb] = useState(false);
+  useEffect(() => {
+    if (params === "rs") {
+      setSrb(true);
+    } else {
+      setSrb(false);
+    }
+  }, [params]);
+
   return (
     <>
-      <Navbar />
+      <Navbar srb={srb} />
 
       <main className="mx-auto flex w-full max-w-screen-2xl flex-col gap-16 px-8 md:gap-32 md:px-16">
         <section
@@ -43,30 +59,34 @@ export default function Home() {
           </div>
           <div className="items-ceter flex w-full flex-col justify-center gap-4">
             <h1 className="max-w-[8em] text-2xl font-bold text-gray-700 md:text-5xl">
-              Business Excellence Group
+              {}
+              Learning Excellence Club
             </h1>
             <p className="max-w-[25em] text-sm text-gray-500 md:text-base">
-              Business Excellence Group svim klijentima daje 100% garanciju
-              zadovoljstva.
+              A part of Business Excellence Group
             </p>
-            <button className="w-fit rounded-lg bg-gradient-to-t from-blue-400 to-blue-500 px-4 py-2 text-gray-50 shadow-sm shadow-blue-300 md:text-lg">
-              Enroll Now!
-            </button>
+            <Link
+              href={`/clanovi?lang=${params}`}
+              className="w-fit rounded-lg bg-gradient-to-t from-blue-400 to-blue-500 px-4 py-2 text-gray-50 shadow-sm shadow-blue-300 md:text-lg"
+            >
+              {srb ? "Učlani se!" : "Enroll Now!"}
+            </Link>
           </div>
           <div className="flex w-full items-center justify-center">
-            <Image
+            <img
               className="hero -translate-y-[7.5%]"
               alt=""
-              src={hero}
-            ></Image>
+              src={"/imgs/hero/hero1.jpg"}
+            ></img>
           </div>
         </section>
-        <Placanje />
-        <Offer />
-        <Ucenje />
-        <Kontakt />
+        <Placanje srb={srb} />
+
+        <Ucenje srb={srb} />
+        <Kontakt srb={srb} />
         <Partners />
       </main>
     </>
   );
 }
+//

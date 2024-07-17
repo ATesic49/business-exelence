@@ -1,24 +1,25 @@
 import Button from "./Button";
-import Image from "next/image";
 import pearlIslands from "@/public/imgs/pearlIslands.jpg";
 
-const Placanje = () => {
+const Placanje = ({ srb }: { srb: boolean | null }) => {
   return (
     <section
       id="teamBuilding"
-      className="flex w-full flex-col items-start justify-between md:flex-row md:gap-8"
+      className="flex w-full max-w-screen-xl flex-col items-start justify-between md:flex-row md:gap-8"
     >
       <div className="flex flex-col gap-4 text-center md:p-4">
         <h2 className="z-20 text-xl font-semibold text-gray-700 md:text-4xl">
-          Pearl Islands
+          {srb ? "Biserna Ostrva" : "  Pearl Islands"}
         </h2>
         <p className="z-20 text-gray-500">
-          Fun and Learning through an Incredible Adventure
+          {srb
+            ? "Zabavite se učeći uz nezaboravno iskustvo"
+            : "Fun and Learning through an Incredible Adventure"}
         </p>
         <div className="relative mt-8 flex flex-col items-center justify-center gap-2">
           <div className="absolute -top-6 left-0 z-20 h-[1px] w-full bg-gray-300"></div>
           <p className="z-20 text-xs text-gray-500">
-            Pearl Islands Business Stimulation
+            {srb ? "Biserna Ostrva " : "Pearl Islands Business Stimulation"}
           </p>
           <span className="z-20 -mb-[5%] text-xl font-bold text-gray-500">
             €250
@@ -35,11 +36,6 @@ const Placanje = () => {
         src="/pivideo.mp4"
         controls
       ></video>
-      {/* <Image
-        className="w-[calc(50%_-_32px)] rounded-lg"
-        alt=""
-        src={pearlIslands}
-      ></Image> */}
     </section>
   );
 };

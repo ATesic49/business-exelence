@@ -6,10 +6,6 @@ import {
   useReducedMotion,
   AnimatePresence,
 } from "framer-motion";
-import imgLeft from "@/public/imgs/hero/hero5.jpg";
-import imgRight from "@/public/imgs/hero/hero4.jpg";
-import imgDetails from "@/public/imgs/hero/hero3.jpg";
-import Image from "next/image";
 const Offer = () => {
   const ref = useRef<HTMLUListElement>(null);
   const div = useRef<HTMLDivElement>(null);
@@ -38,11 +34,11 @@ const Offer = () => {
               }
               transition={{ duration: 1, delay: 0.5 }}
             >
-              <Image
-                src={imgLeft}
+              <img
+                src={"/imgs/hero/hero5.jpg"}
                 alt=""
                 className="mx-auto w-[calc(100%_-_64px)] rounded-lg"
-              ></Image>
+              ></img>
             </motion.div>
             {div.current?.clientHeight && (
               <AnimatePresence>
@@ -72,11 +68,11 @@ const Offer = () => {
               }
               transition={{ duration: 1, delay: 0.5 }}
             >
-              <Image
-                src={imgRight}
+              <img
+                src={"/imgs/hero/hero4.jpg"}
                 alt=""
                 className="mx-auto w-[calc(100%_-_64px)] rounded-lg"
-              ></Image>
+              ></img>
             </motion.div>
             {div.current?.clientHeight && (
               <AnimatePresence>
@@ -102,11 +98,11 @@ const Offer = () => {
             accordance with the basic goals of the event itself. Activities can
             be organized outdoors or indoors.
           </p>
-          <Image
+          <img
             alt=""
-            src={imgDetails}
+            src={"/imgs/hero/hero3.jpg"}
             className="clipHero3 row-start-1 mx-auto rounded-lg md:row-start-auto md:w-4/5"
-          ></Image>
+          ></img>
         </div>
       </div>
     </section>

@@ -13,7 +13,6 @@ const list = [
 const Nabrajanje = () => {
   function indexAdjuster(list: string[], index: number) {
     if (index < 0) {
-      console.log(list.length + index, "rezulttaa");
       return list.length + index;
     } else if (index > list.length - 1) {
       return index - list.length;
@@ -25,10 +24,8 @@ const Nabrajanje = () => {
   const handleWheel = (event: React.WheelEvent<HTMLDivElement>) => {
     if (event.nativeEvent.deltaY > 0) {
       //This needs an increase code
-      console.log("UP");
     } else {
       //This needs a decrease code
-      console.log("DOWN");
     }
   };
   // 2. Framer motion za sve ove li gluposti

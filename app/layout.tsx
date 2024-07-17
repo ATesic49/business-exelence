@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import { useSearchParams } from "next/navigation";
+import LangWrapper from "@/components/LangWrapper";
 
 const inter = Poppins({
   subsets: ["latin"],
@@ -9,9 +11,9 @@ const inter = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Business Excellence Group",
+  title: "Learning Excellence Club",
   description:
-    "Business Excellence Group | Pearl Islands - Fun and Learning through an Incredible Adventure ",
+    "Learning Excellence Club | Pearl Islands - Fun and Learning through an Incredible Adventure ",
 };
 
 export default function RootLayout({
@@ -22,7 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-      <body className={`${inter.className} bg-gray-50`}>{children}</body>
+      <LangWrapper>
+        <body className={`${inter.className} bg-gray-50`}>{children}</body>
+      </LangWrapper>
     </html>
   );
 }
